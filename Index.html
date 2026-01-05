@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 YOU'VE BEEN BLESSED 🎉</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #ff0080);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 900px;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: white;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+            letter-spacing: 3px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .warning {
+            background: rgba(255, 255, 255, 0.95);
+            border: 5px dashed #ff0080;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .video-container {
+            position: relative;
+            margin: 30px 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            border: 5px solid white;
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px;
+            display: block;
+            border-radius: 15px;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff0080, #ff8c00);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.5em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        button:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .emoji-rain {
+            position: fixed;
+            top: -50px;
+            font-size: 2em;
+            animation: fall linear infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        .disclaimer {
+            color: white;
+            margin-top: 30px;
+            font-size: 0.9em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .warning {
+                font-size: 1em;
+                padding: 20px;
+            }
+            button {
+                font-size: 1.2em;
+                padding: 15px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎊 STOP RIGHT THERE! 🎊</h1>
+        
+        <div class="warning" style="background: rgba(144, 238, 144, 0.95); border-color: #28a745; font-size: 1.1em; margin-bottom: 20px;">
+            ✅ DON'T WORRY! ✅<br>
+            This is NOT a suspicious website!<br>
+            This is created by<br>
+            ⭐ THE GREAT CHANDRA ⭐<br>
+            So it's 100% SAFE to click on anything!<br>
+            Trust the process 😎
+        </div>
+        
+        <div class="warning">
+            ⚠️ WARNING ⚠️<br>
+            You are about to witness<br>
+            THE MOST EPIC<br>
+            NEW YEAR MESSAGE<br>
+            OF ALL TIME!<br>
+            <br>
+            Prepare yourself...
+        </div>
+
+        <div class="video-container">
+            <video id="videoPlayer" controls loop autoplay muted>
+                <source src="https://ik.imagekit.io/Chan/HAPPY%20NEW%20YEAR_%E2%9C%8C%EF%B8%8F_.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="disclaimer">
+            May your 2026 be absolutely legendary!
+        </div>
+    </div>
+
+    <script>
+        const emojis = ['🎉', '🎊', '✨', '🎆', '🎈', '🥳', '🍾', '💫', '⭐', '🌟'];
+        
+        function playVideo() {
+            const video = document.getElementById('videoPlayer');
+            video.play();
+            createEmojis();
+        }
+
+        function createEmojis() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const emoji = document.createElement('div');
+                    emoji.className = 'emoji-rain';
+                    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    emoji.style.left = Math.random() * 100 + '%';
+                    emoji.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    document.body.appendChild(emoji);
+
+                    setTimeout(() => emoji.remove(), 5000);
+                }, i * 100);
+            }
+        }
+
+        // Auto-create some emojis on load
+        window.addEventListener('load', () => {
+            setTimeout(createEmojis, 500);
+        });
+    </script>
+</body>
+</html>
